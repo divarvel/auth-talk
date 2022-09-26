@@ -172,7 +172,7 @@ the token holder has to provide a proof, from an external service, that the toke
 
 ---
 
-## Why biscuits?
+# Why biscuits?
 
 - rights management over a polyglot architecture
 - cross-language authorization logic
