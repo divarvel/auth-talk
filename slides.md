@@ -182,6 +182,37 @@ the token holder has to provide a proof, from an external service, that the toke
 
 ---
 
+## Rights management over a polyglot architecture
+
+<details role="note">
+many high-level auth frameworks are tied to / exist within a specific tech stack  
+(eg spring security). The goal here is to provide something that works on multiple  
+platforms, without having to re-implement everything from scratch, if possible  
+including tooling (token generation & audit)
+</details>
+
+---
+
+## Cross-language authorization logic
+
+<details role="note">
+the first step is to provide a langage-independent way of describing authorization logic  
+this is necessary for a polyglot architecture, but that also makes tooling easier to  
+implement (eg to audit authorization policies in isolation)
+</details>
+
+---
+
+## No ties to specific authorization patterns
+
+
+<details role="note">
+even though it's beneficial to have consistent auth patterns at the org level, it should not  
+be dictated by tools (especially cutting edge tools where we want space to explore)
+</details>
+
+---
+
 ## Datalog for authorization logic
 
 <details role="note">
@@ -192,10 +223,76 @@ Expressive, not tied to specific patterns and encodings
 
 ---
 
+```
+// fact
+right("file.txt", "read");
+
+// check
+check if right("file.txt", "read");
+
+// policy
+allow if right("file.txt", "read");
+```
+
+<details role="note">
+facts carry information needed to decide whether or not to allow a request to go through  
+they are typically provided either by the authority (and carried in the token), or by the  
+verifying party  
+checks must all pass, and are useful for transverse checks (eg TTY checks, source IP restrictions, …)  
+or restrictions (more on that later)  
+policies are tried in order. The first one that matches decides if authorization was successful or not  
+(no match -> deny)
+</details>
+
+---
+
+```
+// in the token
+check if time($time), $time < 2022-10-21T00:00:00Z;
+right("organization", "<org1_id>", "read");
+right("organization", "<org2_id>", "write");
+right("account", "<acct1_id>", "write");
+
+// in the service
+time(2022-10-20T00:00:00Z);
+allow if right("organization", "<org1_id>", "write")
+      or right("account", "<acct1_id>", "write");
+```
+
+<details role="note">
+Here the token carries 1 check that must always be fulfilled (a TTL check)  
+It also carries information about the holder: they're allowed to perform
+read operation across the whole ORG1 organization, and write operation for ORG2.
+They are also allowed to perform write operations on ACCT1 (accounts are part of orgs)
+On the service side, the current time is provided (which will allow the token check to
+pass), and a policy checks that the account being accessed can be edited by the holder
+(either with direct account access, or through an organization).
+
+Notice the `$time` bit, it's called a datalog variable and it is used for _unifying_
+facts with rules.
+</details>
+
+---
+
 ## Offline attenuation
 
 <details role="note">
-Checks can be added to an existing token
+In biscuit it's twofold: first we need a cryptographic way to append content to an existing token,
+making it impossible to remove while still making it possible to trust the wrapped token.
+Secondly, we need a way to have the new content describe restrictions without being able to expand
+the scope of the attenuated token
+</details>
+
+---
+
+```
+check if time($time), $time < 2022-10-20T00:00:00Z;
+check if source_ip($source_ip), $source_ip == "1.2.3.4";
+```
+
+<details role="note">
+checks must all pass, so they can only restrict a token, not expand it. They have access to the token
+authority block and the verifier block, so they can use contextual information
 </details>
 
 ---
@@ -203,7 +300,8 @@ Checks can be added to an existing token
 ## Asymmetric cryptography
 
 <details role="note">
-Only the token emitter needs to know secrets, the rest of the services use public keys
+Only the token emitter needs to know secrets, the rest of the services use public keys. this is capital
+in a distributed architecture, to limit the blast radius of a service being compromised
 </details>
 
 ---
