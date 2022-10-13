@@ -6,18 +6,21 @@
 
 ## Let’s talk auth
 
-<details role="note">
-this is a note
-</details>
-
 ---
 
 ## Authn / Authz
+
+<details>
+Geal
+</details>
 
 ---
 
 ## I want to log in and stay connected
 
+<details>
+screenshot
+</details>
 ---
 
 ## Sessions +<br> 🍪 cookie 🍪
@@ -136,10 +139,26 @@ but the attacker provides a token signed with a HMAC, using the public key as th
 
 ---
 
+## What do we put in this query string parameter anyway?
+
+---
+
+## What do we put in this header anyway?
+
+<details>
+For now we've been talking about regular websites, where cookies are the usual delivery mechanism.
+Cookies are still the best delivery mechanism for services called by a browser, but for machine-to-machine
+communication, we can use dedicated HTTP headers, or even put information in the URL for short-term credentials
+like pre-signed URLs.
+</details>
+
+---
+
 ## Just authentification data
 
 <details role="note">
-for simple architectures with a full-stack monolith, the user id is a common choice
+for simple architectures with a full-stack monolith, the user id is a common choice: we just want to persist
+who's logged in, and the server uses that information on every request
 </details>
 
 ---
@@ -147,7 +166,18 @@ for simple architectures with a full-stack monolith, the user id is a common cho
 ## Self-contained authorization rules
 
 <details role="note">
-in a service-oriented architecture with API-to-API calls, identity information alone is not enough
+in a service-oriented architecture with machine-to-machine calls, identity information alone is not enough:
+the token has to carry a description of what it's allowed to do
+</details>
+
+---
+
+## Beware of the SPOF
+
+<details role="note">
+even in a service-oriented architecture, it's possible to centralize all access rules in a dedicated service.
+the issue is that it becomes a SPOF: if it fails, the whole architecture fails.
+So the tradeoff is usually SPOF vs higher latency for rights changes
 </details>
 
 ---
@@ -163,6 +193,7 @@ In any case, authentification (when it makes sense) is just the first step. We n
 ## RBAC / ABAC
 
 <details role="note">
+todo geal
 </details>
 
 ---
@@ -170,6 +201,8 @@ In any case, authentification (when it makes sense) is just the first step. We n
 ## Homegrown solutions
 
 <details role="note">
+That's what's done most of the time: ad hoc logic in controllers, sometimes more structured
+by using a framework-specific solution
 </details>
 
 ---
@@ -178,7 +211,8 @@ In any case, authentification (when it makes sense) is just the first step. We n
 
 <details role="note">
 Zanzibar & copycats: work well (if you're google). Quite restrictive, both in terms of
-architecture, and expressivity
+architecture, and expressivity:
+Zanzibar brings its own authorization model, you have to build on top of that
 </details>
 
 ---
@@ -186,15 +220,27 @@ architecture, and expressivity
 ## I want to log in with google. That's oauth, right?
 
 <details role="note">
+Back to our first example
 </details>
 
 ---
 
 ## oauth is about authorization
 
+<details role="note">
+oauth's goal is to provide access delegation so that a third-party app can access some resources.
+It's not a mechanism designed to delegate authentication (even though authentication can be built
+on top of it)
+</details>
+
 ---
 
 ## OIDC
+
+<details role="note">
+OIDC (OpenID Connect) is a layer on top of oauth that provides authentication. Use it instead of
+making your own solution. Such things are tricky to get right.
+</details>
 
 ---
 
@@ -227,6 +273,14 @@ token generation service
 ---
 
 ## eg: IAM roles
+
+<details role="note">
+In AWS, you can create roles that have access to a restricted set of operations on a restricted set of resources.
+to create a role, you need to connect to the IAM service and you get short-lived credentials in exchange. The IAM
+service itself stores information about the role.
+That's convenient, but it requires talking to IAM everytime you want to craft a restriction. This can fail, this
+takes time, etc.
+</details>
 
 ---
 
@@ -303,6 +357,9 @@ Expressive, not tied to specific patterns and encodings
 // fact
 right("file.txt", "read");
 
+// rule
+can_read($file) <- right($file, "read");
+
 // check
 check if right("file.txt", "read");
 
@@ -373,6 +430,21 @@ authority block and the verifier block, so they can use contextual information
 
 ---
 
+## Third-party blocks
+
+```
+check if group("admin") trusting ed25519/<public_key>;
+```
+
+<details role="note">
+third-party blocks allow gathering facts and checks from multiple sources, so you can restrict access
+to specific resouces based on information coming from another company (eg give read-only access to
+this dropbox file to my facebook friends), without requiring direct communication between dropbox
+and facebook
+</details>
+
+---
+
 ## Asymmetric cryptography
 
 <details role="note">
@@ -394,3 +466,12 @@ in a distributed architecture, to limit the blast radius of a service being comp
 - particularly suited to distributed architectures
 - datalog for rights management
 - offline attenuation
+
+---
+
+# What's next?
+
+- third-party blocks
+- ECDSA support
+- Webauthn support
+- More datalog features
