@@ -154,7 +154,7 @@ like pre-signed URLs.
 
 ---
 
-## Just authentification data
+## Just authentication data
 
 <details role="note">
 for simple architectures with a full-stack monolith, the user id is a common choice: we just want to persist
@@ -185,7 +185,7 @@ So the tradeoff is usually SPOF vs higher latency for rights changes
 ## Authorization rules
 
 <details role="note">
-In any case, authentification (when it makes sense) is just the first step. We need to actually talk about authorization at some point
+In any case, authentication (when it makes sense) is just the first step. We need to actually talk about authorization at some point
 </details>
 
 ---
