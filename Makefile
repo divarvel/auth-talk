@@ -1,4 +1,4 @@
-all: slides-light.html
+all: mermaid slides-light.html
 
 standalone: slides.html
 
@@ -14,6 +14,12 @@ slides.html: slides.md template.html
 		   --template template.html \
 	       -s slides.md \
 		   -o slides.html
+
+dependencies:
+	npm ci
+
+mermaid:
+	./mmd.sh
 
 clean:
 	-rm slides.html

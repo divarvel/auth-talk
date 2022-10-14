@@ -1,0 +1,8 @@
+sequenceDiagram
+    participant User
+    participant Website
+    participant Database
+    User->>Website: POST /login
+    Website->>Database: look up user@example.com
+    Database->>Website: SID-123
+    Website->>User: Set-Cookie: SID-123

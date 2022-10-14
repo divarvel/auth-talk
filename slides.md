@@ -31,7 +31,7 @@ State stored on the server + a cookie to link requests to said state
 
 ---
 
-![](./assets/session-file.png)
+![](./assets/session-file.svg)
 
 ---
 
