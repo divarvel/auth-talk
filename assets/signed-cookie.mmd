@@ -1,7 +1,7 @@
 sequenceDiagram
     Browser->>Server: POST /login
-    Server->>Browser: Set-Cookie: SESSION="user=1234&sig=xxx"
+    Server->>Browser: Set-Cookie: SESSION="user=1234&sig=📝"
 
-    Browser->>Server: GET /home, Cookie: SESSION="user=1234&sig=xxx"
+    Browser->>Server: GET /home, Cookie: SESSION="user=1234&sig=📝"
     Server->>Browser: Homepage for user 1234
             
