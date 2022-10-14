@@ -10,14 +10,15 @@
 
 ## Authn / Authz
 
-<details>
+<details role="note">
 Geal
 </details>
 
 ---
+
 ## I want to log in
 
-<details>
+<details role="note">
 screenshot
 </details>
 
@@ -31,14 +32,13 @@ Sending user and password to recognize the user
 
 ---
 
-![](./assets/)
 
 
 ---
 
 ## I want to log in _and stay connected_
 
-<details>
+<details role="note">
 screenshot
 </details>
 ---
@@ -245,7 +245,7 @@ but the attacker provides a token signed with a HMAC, using the public key as th
 
 ## What do we put in this header anyway?
 
-<details>
+<details role="note">
 For now we've been talking about regular websites, where cookies are the usual delivery mechanism.
 Cookies are still the best delivery mechanism for services called by a browser, but for machine-to-machine
 communication, we can use dedicated HTTP headers, or even put information in the URL for short-term credentials
