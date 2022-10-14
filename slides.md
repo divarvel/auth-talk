@@ -15,8 +15,28 @@ Geal
 </details>
 
 ---
+## I want to log in
 
-## I want to log in and stay connected
+<details>
+screenshot
+</details>
+
+---
+
+## Sending user and password
+
+<details role="note">
+Sending user and password to recognize the user
+</details>
+
+---
+
+![](./assets/)
+
+
+---
+
+## I want to log in _and stay connected_
 
 <details>
 screenshot
@@ -35,7 +55,87 @@ State stored on the server + a cookie to link requests to said state
 
 ---
 
-# Yes,
+## I want to log in with google. That's oauth, right?
+
+<details role="note">
+Back to our first example
+</details>
+
+---
+
+## oauth is about authorization
+
+<details role="note">
+oauth's goal is to provide access delegation so that a third-party app can access some resources.
+It's not a mechanism designed to delegate authentication (even though authentication can be built
+on top of it)
+</details>
+
+---
+
+## OIDC
+
+<details role="note">
+OIDC (OpenID Connect) is a layer on top of oauth that provides authentication. Use it instead of
+making your own solution. Such things are tricky to get right.
+</details>
+
+---
+
+## I'm logged in, now what?
+
+---
+
+## Authorization rules
+
+<details role="note">
+In any case, authentication (when it makes sense) is just the first step. We need to actually talk about authorization at some point
+</details>
+
+---
+
+## RBAC / ABAC
+
+<details role="note">
+todo geal
+</details>
+
+---
+
+## Homegrown solutions
+
+<details role="note">
+That's what's done most of the time: ad hoc logic in controllers, sometimes more structured
+by using a framework-specific solution
+</details>
+
+---
+
+## Off the shelf solutions
+
+<details role="note">
+Zanzibar & copycats: work well (if you're google). Quite restrictive, both in terms of
+architecture, and expressivity:
+Zanzibar brings its own authorization model, you have to build on top of that
+</details>
+
+
+---
+
+## Authorization rules
+
+<details role="note">
+In the case of access delegation, fine-grained access control is even more important:
+one rarely wants to delegate full control to a third-party tool
+</details>
+
+---
+
+# State management, cookies and tokens
+
+---
+
+# Session cookies are great,
 
 - simple
 - easy to revoke
@@ -178,77 +278,6 @@ the token has to carry a description of what it's allowed to do
 even in a service-oriented architecture, it's possible to centralize all access rules in a dedicated service.
 the issue is that it becomes a SPOF: if it fails, the whole architecture fails.
 So the tradeoff is usually SPOF vs higher latency for rights changes
-</details>
-
----
-
-## Authorization rules
-
-<details role="note">
-In any case, authentication (when it makes sense) is just the first step. We need to actually talk about authorization at some point
-</details>
-
----
-
-## RBAC / ABAC
-
-<details role="note">
-todo geal
-</details>
-
----
-
-## Homegrown solutions
-
-<details role="note">
-That's what's done most of the time: ad hoc logic in controllers, sometimes more structured
-by using a framework-specific solution
-</details>
-
----
-
-## Off the shelf solutions
-
-<details role="note">
-Zanzibar & copycats: work well (if you're google). Quite restrictive, both in terms of
-architecture, and expressivity:
-Zanzibar brings its own authorization model, you have to build on top of that
-</details>
-
----
-
-## I want to log in with google. That's oauth, right?
-
-<details role="note">
-Back to our first example
-</details>
-
----
-
-## oauth is about authorization
-
-<details role="note">
-oauth's goal is to provide access delegation so that a third-party app can access some resources.
-It's not a mechanism designed to delegate authentication (even though authentication can be built
-on top of it)
-</details>
-
----
-
-## OIDC
-
-<details role="note">
-OIDC (OpenID Connect) is a layer on top of oauth that provides authentication. Use it instead of
-making your own solution. Such things are tricky to get right.
-</details>
-
----
-
-## Authorization rules
-
-<details role="note">
-In the case of access delegation, fine-grained access control is even more important:
-one rarely wants to delegate full control to a third-party tool
 </details>
 
 ---
