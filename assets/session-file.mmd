@@ -1,8 +1,12 @@
 sequenceDiagram
-    participant User
+    participant Browser
     participant Website
-    participant Database
-    User->>Website: POST /login
-    Website->>Database: look up user@example.com
-    Database->>Website: SID-123
-    Website->>User: Set-Cookie: SID-123
+    participant Filesystem
+    Browser->>Website: POST /login
+    Website->>Filesystem: abcd: user_id = 1234
+    Filesystem->>Website: abcd
+    Website->>Browser: Set-Cookie: SID=abcd
+    Browser->>Website: GET /home, Cookie: SID=abcd
+    Website->>Filesystem: lookup abcd
+    Filesystem->>Website: abcd: user_id = 1234
+    Website->>Browser: Homepage for user 1234

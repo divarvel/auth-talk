@@ -67,7 +67,7 @@ It's signed to avoid tampering
 
 ---
 
-![](./assets/signed-cookie.png)
+![](./assets/signed-cookie.svg)
 
 <details role="note">
 the cookie contains state, and a digital signature created by the server making sure the cookie contents

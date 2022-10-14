@@ -3,5 +3,6 @@
 mkShell {
   buildInputs = [
     pandoc
+    nodejs
   ];
 }
