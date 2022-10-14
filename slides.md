@@ -228,15 +228,15 @@ but the attacker provides a token signed with a HMAC, using the public key as th
 
 ---
 
-## What do we put in this cookie anyway?
+## <small style="font-size: 2.5rem;">What do we put in this <br><span style="display: inline-block; text-align:left; width: 6em;">cookie</span> anyway?</small>
 
 ---
 
-## What do we put in this query string parameter anyway?
+## <small style="font-size: 2.5rem;">What do we put in this <br><span style="display: inline-block; text-align:left; width: 6em;">query param</span> anyway?</small>
 
 ---
 
-## What do we put in this header anyway?
+## <small style="font-size: 2.5rem;">What do we put in this <br><span style="display: inline-block; text-align:left; width: 6em;">header</span> anyway?</small>
 
 <details role="note">
 For now we've been talking about regular websites, where cookies are the usual delivery mechanism.
@@ -324,7 +324,7 @@ the token holder has to provide a proof, from an external service, that the toke
 
 ---
 
-# Why biscuits?
+## Why biscuits?
 
 <details role="note">
 created for the clever cloud platform, as an evolution over macaroons.
@@ -334,7 +334,7 @@ as well as unstructured caveats
 
 ---
 
-## Rights management over a polyglot architecture
+## <small style="font-size: 2.5rem">Rights management over a polyglot architecture</small>
 
 <details role="note">
 many high-level auth frameworks are tied to / exist within a specific tech stack  
@@ -452,10 +452,15 @@ authority block and the verifier block, so they can use contextual information
 
 ---
 
-## Third-party blocks
+# Third-party blocks
 
 ```
 check if group("admin") trusting ed25519/<public_key>;
+
+
+
+
+
 ```
 
 <details role="note">
