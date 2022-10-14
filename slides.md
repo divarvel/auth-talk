@@ -45,13 +45,17 @@ Back to our first example
 
 ---
 
-## oauth is about authorization
+## oauth is about ~authorization~delegation
 
 <details role="note">
 oauth's goal is to provide access delegation so that a third-party app can access some resources.
 It's not a mechanism designed to delegate authentication (even though authentication can be built
 on top of it)
 </details>
+
+---
+
+![](./assets/oauth.svg)
 
 ---
 
