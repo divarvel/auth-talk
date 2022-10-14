@@ -1,0 +1,7 @@
+sequenceDiagram
+    participant Browser
+    participant Website
+    Browser->>Website: GET /articles?user=user@example.com&password=1234
+    Website->>Browser: 200 OK
+     Browser->>Website: GET /articles/1?user=user@example.com&password=1234
+    Website->>Browser: 200 OK

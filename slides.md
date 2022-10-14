@@ -32,6 +32,7 @@ Sending user and password to recognize the user
 
 ---
 
+![](./assets/no-session.svg)
 
 
 ---
