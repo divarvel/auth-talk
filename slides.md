@@ -36,26 +36,7 @@ Sending user and password to recognize the user
 
 ---
 
-## I want to log in _and stay connected_
-
-<details role="note">
-screenshot
-</details>
----
-
-## Sessions +<br> 🍪 cookie 🍪
-
-<details role="note">
-State stored on the server + a cookie to link requests to said state
-</details>
-
----
-
-![](./assets/session-file.svg)
-
----
-
-## I want to log in with google. That's oauth, right?
+# I want to log in with google. That's oauth, right?
 
 <details role="note">
 Back to our first example
@@ -131,11 +112,23 @@ one rarely wants to delegate full control to a third-party tool
 
 ---
 
-# State management, cookies and tokens
+## State management, cookies and tokens
 
 ---
 
-# Session cookies are great,
+## Sessions +<br> 🍪 cookie 🍪
+
+<details role="note">
+State stored on the server + a cookie to link requests to said state
+</details>
+
+---
+
+![](./assets/session-file.svg)
+
+---
+
+# Yes,
 
 - simple
 - easy to revoke
