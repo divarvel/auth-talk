@@ -304,11 +304,11 @@ the token holder has to provide a proof, from an external service, that the toke
 
 # Why biscuits?
 
-- rights management over a polyglot architecture
-- cross-language authorization logic
-- no ties to specific authorization patterns
-- offline attenuation
-- asymmetric cryptography
+<details role="note">
+created for the clever cloud platform, as an evolution over macaroons.
+Good POCs with macaroons, but symmetric crypto was a blocker,
+as well as unstructured caveats
+</details>
 
 ---
 
