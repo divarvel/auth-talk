@@ -45,7 +45,7 @@ Back to our first example
 
 ---
 
-## oauth is about ~authorization~delegation
+## oauth is about <del>authorization</del> delegation
 
 <details role="note">
 oauth's goal is to provide access delegation so that a third-party app can access some resources.
@@ -276,6 +276,24 @@ the token has to carry a description of what it's allowed to do
 even in a service-oriented architecture, it's possible to centralize all access rules in a dedicated service.
 the issue is that it becomes a SPOF: if it fails, the whole architecture fails.
 So the tradeoff is usually SPOF vs higher latency for rights changes
+</details>
+
+---
+
+## SPOF or latency
+
+<details role="note">
+that's the main tradeoff when choosing between bearer tokens and session tokens. a common mistake is to use bearer
+tokens and then reintroduce a SPOF on top of it (typically for revocation checks)
+</details>
+
+---
+
+## Mitigations
+
+<details role="note">
+short TTLs on tokens + stateful refresh tokens (à la oauth)
+make sure tokens can be identified (so that they can be revoked)
 </details>
 
 ---
