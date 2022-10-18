@@ -18,9 +18,9 @@ Geal
 
 ## I want to log in
 
-<details role="note">
-screenshot
-</details>
+---
+
+![](./assets/login.png)
 
 ---
 
@@ -80,7 +80,19 @@ In any case, authentication (when it makes sense) is just the first step. We nee
 
 ---
 
-## RBAC / ABAC
+## Terminology
+
+<details role="note">
+what's a principal?
+</details>
+
+---
+
+# Models
+
+- ACLs
+- RBAC
+- ABAC
 
 <details role="note">
 todo geal
@@ -97,6 +109,26 @@ by using a framework-specific solution
 
 ---
 
+```
+@Bean
+public SecurityFilterChain securityFilterChain(HttpSecurity http)
+  throws Exception {
+   http
+    .authorizeHttpRequests((requests) -> requests
+      .antMatchers("/", "/home").permitAll()
+      .anyRequest().authenticated()
+    )
+    .formLogin((form) -> form
+      .loginPage("/login")
+      .permitAll()
+    )
+    .logout((logout) -> logout.permitAll());
+  return http.build();
+}
+```
+
+---
+
 ## Off the shelf solutions
 
 <details role="note">
@@ -104,7 +136,6 @@ Zanzibar & copycats: work well (if you're google). Quite restrictive, both in te
 architecture, and expressivity:
 Zanzibar brings its own authorization model, you have to build on top of that
 </details>
-
 
 ---
 
@@ -486,24 +517,23 @@ and facebook
 
 ---
 
+# What's next?
+
+- third-party blocks
+- ECDSA support
+- WebAuthn support
+- More datalog features
+
+---
+
+## In conclusion
+
+<details role="note">
+
 - many different tools
 - most of them are either super complex or super rigid
 - mostly identity and delegation
 - ad-hoc solutions for actual authorization
 - hard to audit code, often duplicated
 
----
-
-- biscuit is a platform
-- particularly suited to distributed architectures
-- datalog for rights management
-- offline attenuation
-
----
-
-# What's next?
-
-- third-party blocks
-- ECDSA support
-- Webauthn support
-- More datalog features
+</details>
