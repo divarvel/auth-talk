@@ -1,6 +1,6 @@
-all: mermaid slides-light.html
+all: slides-light.html mermaid
 
-standalone: slides.html
+standalone: slides.html mermaid
 
 slides-light.html: slides.md template.html
 	pandoc -t dzslides \
