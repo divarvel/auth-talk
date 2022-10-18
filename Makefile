@@ -24,3 +24,6 @@ mermaid:
 clean:
 	-rm slides.html
 	-rm slides-light.html
+
+upload:
+	aws --profile clever --endpoint-url https://cellar-c2.services.clever-cloud.com s3 cp --acl public-read slides.html s3://clementd-files/devfest-biscuit.html
