@@ -108,15 +108,6 @@ Zanzibar brings its own authorization model, you have to build on top of that
 
 ---
 
-## Authorization rules
-
-<details role="note">
-In the case of access delegation, fine-grained access control is even more important:
-one rarely wants to delegate full control to a third-party tool
-</details>
-
----
-
 ## State management, cookies and tokens
 
 ---
