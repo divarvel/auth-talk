@@ -486,15 +486,6 @@ and facebook
 
 ---
 
-## Asymmetric cryptography
-
-<details role="note">
-Only the token emitter needs to know secrets, the rest of the services use public keys. this is capital
-in a distributed architecture, to limit the blast radius of a service being compromised
-</details>
-
----
-
 - many different tools
 - most of them are either super complex or super rigid
 - mostly identity and delegation
