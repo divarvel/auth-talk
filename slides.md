@@ -24,7 +24,7 @@ Geal
 
 ---
 
-## Sending user and password
+### Sending user and password
 
 <details role="note">
 Sending user and password to recognize the user
@@ -59,7 +59,7 @@ on top of it)
 
 ---
 
-## OIDC
+## OpenID, OpenID Connect (OIDC), SCIM, Self issued OpenID, PassKeys...
 
 <details role="note">
 OIDC (OpenID Connect) is a layer on top of oauth that provides authentication. Use it instead of
@@ -130,6 +130,11 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http)
 ---
 
 ## Off the shelf solutions
+
+- Zanzibar implementations
+- oso
+- OPA
+- casbin
 
 <details role="note">
 Zanzibar & copycats: work well (if you're google). Quite restrictive, both in terms of
@@ -369,7 +374,7 @@ the token holder has to provide a proof, from an external service, that the toke
 
 ---
 
-## Why biscuits?
+## Biscuits
 
 <details role="note">
 created for the clever cloud platform, as an evolution over macaroons.
@@ -379,7 +384,12 @@ as well as unstructured caveats
 
 ---
 
-## <small style="font-size: 2.5rem">Rights management over a polyglot architecture</small>
+![](./assets/token_disambiguation.jpg)
+
+
+---
+
+## <small style="font-size: 2.5rem">Authorization across a service oriented architecture</small>
 
 <details role="note">
 many high-level auth frameworks are tied to / exist within a specific tech stack  
@@ -494,6 +504,11 @@ check if source_ip($source_ip), $source_ip == "1.2.3.4";
 checks must all pass, so they can only restrict a token, not expand it. They have access to the token
 authority block and the verifier block, so they can use contextual information
 </details>
+
+---
+
+![](./assets/biscuit-microservices.svg)
+
 
 ---
 
