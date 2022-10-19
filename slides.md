@@ -470,7 +470,7 @@ generation service.
 ## Macaroons
 
 <details role="note">
-clementd
+geoffroy &amp; clementd
 Macaroons provide offline attenuation, through the use of _caveats_. It even allows 3rd-party attenuation:  
 the token holder has to provide a proof, from an external service, that the token can be used in a specific context
 </details>
