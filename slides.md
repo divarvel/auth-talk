@@ -8,6 +8,10 @@
 
 ---
 
+![](./assets/pele-mele.png)
+
+---
+
 ## Authn / Authz
 
 <details role="note">
@@ -59,7 +63,12 @@ on top of it)
 
 ---
 
-## OpenID, OpenID Connect (OIDC), SCIM, Self issued OpenID, PassKeys...
+- OpenID
+- OpenID Connect (OIDC)
+- SCIM
+- Self issued OpenID
+- PassKeys
+- …
 
 <details role="note">
 OIDC (OpenID Connect) is a layer on top of oauth that provides authentication. Use it instead of
@@ -129,7 +138,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http)
 
 ---
 
-## Off the shelf solutions
+# Off the shelf solutions
 
 - Zanzibar implementations
 - oso
